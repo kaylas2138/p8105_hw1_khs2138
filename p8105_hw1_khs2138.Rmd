@@ -1,21 +1,22 @@
 ---
-title: "Simple document"
-output: github_document
+title: "P8105 Homework 1"
+author: "Kayla Schiffer-Kane"
+date: September 23, 2023
+output: 
+  github_document:
+    toc: true
 ---
 
-I'm an R Markdown document! 
+# Problem 1
 
-# Section 1
+## Load and Explore Dataset
 
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
-```{r}
-samp = rnorm(100)
-length(samp)
+```{r load_data}
+library(moderndive)
+data("early_january_weather")
+penguins_df = data("early_january_weather")
+typeof(penguins_df)
+penguins_df
 ```
 
-# Section 2
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
