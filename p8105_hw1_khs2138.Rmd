@@ -16,8 +16,11 @@ output:
 library(moderndive)
 data("early_january_weather")
 penguins_df = early_january_weather
-penguins_df
-nrow(penguins_df)
 ```
 
+Exploring which variables are "important"/descriptive of the dataset 
 
+```{r explore_data}
+colnames(penguins_df)
+summary(penguins_df)
+```
