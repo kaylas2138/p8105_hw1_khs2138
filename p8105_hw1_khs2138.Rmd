@@ -11,21 +11,11 @@ output:
 
 ## Load and Explore Dataset
 
-
 ```{r load_data}
 library(moderndive)
 data("early_january_weather")
 jan_df = early_january_weather
 ```
-
-Exploring which variables are "important"/descriptive of the dataset 
-
-```{r explore_data}
-colnames(jan_df)
-summary(jan_df)
-?early_january_weather
-```
-
 
 Below are some basic descriptors of this dataset, which provides hourly weather for airports:
 
@@ -33,3 +23,14 @@ Below are some basic descriptors of this dataset, which provides hourly weather 
 * The variables in this dataset are as follows: _`r colnames(jan_df)`_.
 * Of particular note, the _origin_ of the weather is _`r unique(jan_df$origin)`_ and the data is recorded for the _year_ _`r unique(jan_df$year)`_. It covers data on the _month_ of _`r unique(jan_df$month)`_ (January) up to the _`r max(jan_df$day)`_ th _day_, hence "early" January weather!
 * The **mean temperature** is `r mean(jan_df$temp)`
+
+
+## Data Visualization
+Creating a scatter plot of `temp` (y) vs `time_hour` (x); color points using the `humid` variable (adding `color = ...` inside of `aes` in your ggplot code should help). Describe patterns that are apparent in this plot.
+
+```{r scatter_plot, message = FALSE}
+library(tidyverse)
+ggplot(jan_df, aes(x = hour, y = temp, color = humid)) + geom_point()
+
+```
+
