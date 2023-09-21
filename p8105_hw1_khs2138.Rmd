@@ -31,6 +31,6 @@ Creating a scatter plot of `temp` (y) vs `time_hour` (x); color points using the
 ```{r scatter_plot, message = FALSE}
 library(tidyverse)
 ggplot(jan_df, aes(x = hour, y = temp, color = humid)) + geom_point()
-
+ggsave("hour_temp.pdf", height = 4, width = 8)
 ```
 
