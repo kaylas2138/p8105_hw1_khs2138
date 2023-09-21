@@ -34,3 +34,16 @@ ggplot(jan_df, aes(x = hour, y = temp, color = humid)) + geom_point()
 ggsave("hour_temp.pdf", height = 4, width = 8)
 ```
 
+
+# Problem 2
+
+```{r data_frame}
+tibble(
+  vec_norm = rnorm(10),
+  vec_log = vec_norm > 0,
+  vec_char = c(letters[0:10])
+#  vec_factor 
+)
+
+```
+
