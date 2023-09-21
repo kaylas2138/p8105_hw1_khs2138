@@ -11,12 +11,13 @@ output:
 
 ## Load and Explore Dataset
 
+
 ```{r load_data}
 library(moderndive)
 data("early_january_weather")
-penguins_df = data("early_january_weather")
-typeof(penguins_df)
+penguins_df = early_january_weather
 penguins_df
+nrow(penguins_df)
 ```
 
 
