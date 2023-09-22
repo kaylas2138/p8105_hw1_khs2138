@@ -51,19 +51,24 @@ types_df = tibble(
 
 Exploring means of the variables in the above dataframe:
 ```{r means}
-mean(types_df$vec_norm)
-mean(types_df$vec_log)
-mean(types_df$vec_char)
-mean(types_df$vec_factor)
+library(tidyverse)
+mean(pull(types_df, var = vec_norm))
+mean(pull(types_df, var = vec_log))
+mean(pull(types_df, var = vec_char))
+mean(pull(types_df, var = vec_factor))
 ```
 
-* As expected, the mean of `vec_norm`, which is numeric works and is `r mean(types_df$vec_norm)`
-* The logical vector, `vec_log` seems to return the proportion of TRUE entries in the logical vector. In this case, `r sum(types_df$vec_log)` / 10 = `r mean(types_df$vec_log)`
+* As expected, the mean of `vec_norm`, which is numeric works and is `r mean(pull(types_df, var = vec_norm))`
+* The logical vector, `vec_log` seems to return the proportion of TRUE entries in the logical vector. In this case, `r sum(pull(types_df, var = vec_log))` / 10 = `r mean(pull(types_df, var = vec_log))`
 * Both the means of the character vector and the factor vector return NA and a warning that the arguments (the vectors passed) are not numerical or logical. 
 
-```{r pull}
-library(tidyverse)
-mean(pull(types_df, var = vec_norm)) == mean(types_df$vec_norm)
+```{r convert_num, results = FALSE}
+as.numeric(pull(types_df, var = vec_log))
+as.numeric(pull(types_df, var = vec_char))
+as.numeric(pull(types_df, var = vec_factor))
 ```
 
+Coercion to numeric works for the **logical factor** (converting TRUE/FALSE to 1/0) and for the **factor vector** (converts them to respective levels). It fails for the **character vector**, returning an "NAs introduced by coercion". 
+
+**Relation to results of calling mean on these variables:** I presume this means that when calling the mean() function, it will calcualte numeric values directly, and it automatically coerces logical values to numerics to calculate the proportion of TRUE/FALSE. But mean() will not coerce factor vectors to numeric. 
 
