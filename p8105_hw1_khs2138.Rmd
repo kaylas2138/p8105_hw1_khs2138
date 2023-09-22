@@ -38,12 +38,13 @@ ggsave("hour_temp.pdf", height = 4, width = 8)
 # Problem 2
 
 ```{r data_frame}
-tibble(
-  vec_norm = rnorm(10),
+types_df = tibble(
+  vec_norm = rnorm(10, mean = 0, sd = 1),
   vec_log = vec_norm > 0,
-  vec_char = c(letters[0:10])
-#  vec_factor 
+  vec_char = c(letters[0:10]),
+  vec_factor = factor(c(0,1,0,0,1,2,2,1,2,0))
 )
-
+types_df
+levels(types_df$vec_factor)
 ```
 
