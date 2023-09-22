@@ -61,4 +61,9 @@ mean(types_df$vec_factor)
 * The logical vector, `vec_log` seems to return the proportion of TRUE entries in the logical vector. In this case, `r sum(types_df$vec_log)` / 10 = `r mean(types_df$vec_log)`
 * Both the means of the character vector and the factor vector return NA and a warning that the arguments (the vectors passed) are not numerical or logical. 
 
+```{r pull}
+library(tidyverse)
+mean(pull(types_df, var = vec_norm)) == mean(types_df$vec_norm)
+```
+
 
