@@ -10,6 +10,7 @@ output:
 # Problem 1
 
 ## Load and Explore Dataset
+Loading package moderndive, creating a dataframe from the early_january_weather dataset within that package. 
 
 ```{r load_data}
 library(moderndive)
@@ -17,7 +18,7 @@ data("early_january_weather")
 jan_df = early_january_weather
 ```
 
-Below are some basic descriptors of this dataset, which provides hourly weather for airports:
+Below are some basic descriptors of this dataset, which provides hourly weather for airports (using in line code):
 
 * The data set has **`r nrow(jan_df)` rows** and **`r ncol(jan_df)` variables**.
 * The variables in this dataset are as follows: _`r colnames(jan_df)`_.
@@ -37,6 +38,8 @@ ggsave("hour_temp.pdf", height = 4, width = 8)
 
 # Problem 2
 
+Creating a dataframe with comprised of: a random sample from a normal distribution, a logical vector indicating which elements from the random sample are greater than 0, a character vector, and a factor vector with three levels. All of lenght 10. 
+
 ```{r data_frame}
 types_df = tibble(
   vec_norm = rnorm(10, mean = 0, sd = 1),
@@ -44,7 +47,18 @@ types_df = tibble(
   vec_char = c(letters[0:10]),
   vec_factor = factor(c(0,1,0,0,1,2,2,1,2,0))
 )
-types_df
-levels(types_df$vec_factor)
 ```
+
+Exploring means of the variables in the above dataframe:
+```{r means}
+mean(types_df$vec_norm)
+mean(types_df$vec_log)
+mean(types_df$vec_char)
+mean(types_df$vec_factor)
+```
+
+* As expected, the mean of `vec_norm`, which is numeric works and is `r mean(types_df$vec_norm)`
+* The logical vector, `vec_log` seems to return the proportion of TRUE entries in the logical vector. In this case, `r sum(types_df$vec_log)` / 10 = `r mean(types_df$vec_log)`
+* Both the means of the character vector and the factor vector return NA and a warning that the arguments (the vectors passed) are not numerical or logical. 
+
 
