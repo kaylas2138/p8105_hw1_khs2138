@@ -38,6 +38,8 @@ ggsave("hour_temp.pdf", height = 4, width = 8)
 
 # Problem 2
 
+## Create Dataframe
+
 Creating a dataframe with comprised of: a random sample from a normal distribution, a logical vector indicating which elements from the random sample are greater than 0, a character vector, and a factor vector with three levels. All of lenght 10. 
 
 ```{r data_frame}
@@ -48,6 +50,8 @@ types_df = tibble(
   vec_factor = factor(c(0,1,0,0,1,2,2,1,2,0))
 )
 ```
+
+## Means of data 
 
 Exploring means of the variables in the above dataframe:
 ```{r means}
@@ -61,6 +65,8 @@ mean(pull(types_df, var = vec_factor))
 * As expected, the mean of `vec_norm`, which is numeric works and is `r mean(pull(types_df, var = vec_norm))`
 * The logical vector, `vec_log` seems to return the proportion of TRUE entries in the logical vector. In this case, `r sum(pull(types_df, var = vec_log))` / 10 = `r mean(pull(types_df, var = vec_log))`
 * Both the means of the character vector and the factor vector return NA and a warning that the arguments (the vectors passed) are not numerical or logical. 
+
+## Exploring Coercion
 
 ```{r convert_num, results = FALSE}
 as.numeric(pull(types_df, var = vec_log))
